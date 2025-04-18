@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarnBuddy - Complete Offers & Get Paid</title>
+    <style>
+        :root {
+            --primary: #13aa52;
+            --secondary: #ffd700;
+            --dark: #1a1a1a;
+            --light: #f9f9f9;
+            --white: #ffffff;
+            --gray: #f0f0f0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background-color: #0e8b40;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e5c100;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #0d8240);
+            color: var(--white);
+            padding: 130px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .how-it-works {
+            padding: 80px 0;
+            background-color: var(--gray);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .step {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .earnings {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .earning-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .earning-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .earning-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .earning-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .earning-card ul {
+            list-style-position: inside;
+            margin-top: 15px;
+        }
+        
+        .earning-card ul li {
+            margin-bottom: 10px;
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--gray);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-size: 60px;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            color: var(--primary);
+            opacity: 0.2;
+        }
+        
+        .user-rating {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            background-color: #e1e1e1;
+        }
+        
+        .leaderboard {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .leaderboard-table th,
+        .leaderboard-table td {
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .leaderboard-table th {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .leaderboard-table tr:nth-child(even) {
+            background-color: var(--gray);
+        }
+        
+        .leaderboard-table tr:nth-child(odd) {
+            background-color: var(--white);
+        }
+        
+        .payment-proofs {
+            padding: 80px 0;
+            background-color: var(--gray);
+        }
+        
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .payment-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .payment-img {
+            width: 100%;
+            height: 180px;
+            background-color: #e1e1e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .payment-info {
+            padding: 15px;
+        }
+        
+        .payment-amount {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .faq {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .accordion {
+            margin-top: 30px;
+        }
+        
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .accordion-header {
+            background-color: var(--light);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background-color: #e6e6e6;
+        }
+        
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background-color: var(--white);
+        }
+        
+        .accordion-content.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), #0d8240);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Notification popup */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s, opacity 0.3s;
+            z-index: 100;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+        
+        .notification-text {
+            flex: 1;
+        }
+        
+        .notification-text strong {
+            color: var(--primary);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+        
+        /* Menu toggle for mobile */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+        }
+        
+        /* Badges and Levels */
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .badge-beginner {
+            background-color: #cce5ff;
+            color: #0d6efd;
+        }
+        
+        .badge-intermediate {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+        
+        .badge-expert {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+        
+        .badge-master {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Earn<span>Buddy</span></a>
+                <div class="nav-links">
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="https://unlockcontent.net/cl/i/7d6qn5
+">Earnings</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#leaderboard">Leaderboard</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div>
+                    <a href="https://bigappboi.com/fl/51lmk" class="btn">Sign Up Free</a>
+                </div>
+                <div class="menu-toggle">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Turn Your Free Time into Real Money</h1>
+            <p>Complete simple tasks, offers, and surveys to earn instant cash rewards. Paid directly to your Paytm, Google Pay, or redeem as gift cards.</p>
+            <div class="hero-cta">
+                <a href="https://unlockcontent.net/cl/i/7d6qn5
+" class="btn btn-secondary">Start Earning Now</a>
+                <a href="https://locked3.com/cl/i/e6q7wk" class="btn">Learn How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose EarnBuddy?</h2>
+                <p>We make earning extra cash simple, fast, and rewarding</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💸</div>
+                    <h3>Daily Payouts</h3>
+                    <a href="https://unlockcontent.net/cl/i/7d6qn5
+" class="btn btn-secondary">Check</a>
+                    <p>Request your earnings anytime and get paid within 24 hours to your preferred payment method.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Gamified Experience</h3>
+                    <a href="https://unlockcontent.net/cl/i/7d6qn5
+" class="btn btn-secondary">Check</a>
+                    <p>Earn badges, level up, and unlock higher-paying offers as you complete more tasks.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Refer & Earn</h3>
+                    <a href="https://unlockcontent.net/cl/i/7d6qn5
+" class="btn btn-secondary">Check</a>
+                    <p>Invite friends and earn 10% of their earnings for life, without affecting their rewards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- Earnings Section -->
+    <section class="earnings" id="earnings">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ways to Earn</h2>
+                <p>Multiple options to maximize your earnings</p>
+            </div>
+            <div class="earning-methods">
+                <div class="earning-card">
+                    <h3>📝 Surveys</h3>
+                    <a href="https://unlockcontent.net/cl/i/7d6qn5
+" class="btn btn-secondary">Click</a>
+                    <p>Share your opinion and get rewarded instantly. Most surveys take 5-15 minutes and pay ₹20-₹100 each.</p>
+                    <ul>
+                        <li>Consumer feedback surveys</li>
+                        <li>Product testing opportunities</li>
+                        <li>Market research panels</li>
+                    </ul>
+                </div>
+                <div class="earning-card">
+                    <h3>📱 App Downloads</h3>
+                    <a href="https://installchecker.com/cl/i/e6q7wk
+" class="btn btn-secondary">Check</a>
+                    <p>Try new apps and games to earn quick rewards. Simply download, use for a few minutes, and get paid.</p>
+                    <ul>
+                        <li>Gaming apps: ₹30-₹150</li>
+                        <li>Shopping apps: ₹20-₹80</li>
+                        <li>Utility apps: ₹15-₹50</li>
+                    </ul>
+                </div>
+               
+                <div class="earning-card">
+                    <h3>👥 Referrals</h3>
+                    <a href="https://installchecker.com/cl/i/e6q7wk
+" class="btn btn-secondary">Check</a>
+                    <p>Share your unique link with friends and earn 10% of their earnings forever!</p>
+                    <ul>
+                        <li>Custom referral links</li>
+                        <li>Promotional materials provided</li>
+                        <li>Track referrals in real-time</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Users Say</h2>
+                <p>Success stories from real EarnBuddy users</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="user-rating">★★★★★</div>
+                    <p>"I was skeptical at first, but after earning ₹2,500 in my first month just by using EarnBuddy during my commute, I'm completely convinced! The PayTM transfers are instant."</p>
+                    <div class="user-info">
+                        <div class="user-avatar"></div>
+                        <div>
+                            <strong>Rahul Sharma</strong>
+                            <div>Delhi, Student</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="user-rating">★★★★★</div>
+                    <p>"As a stay-at-home mom, I've been able to contribute to our family income by completing surveys while my baby naps. I've earned over ₹12,000 in the past 3 months!"</p>
+                    <div class="user-info">
+                        <div class="user-avatar"></div>
+                        <div>
+                            <strong>Priyam jangid</strong>
+                            <div>Mumbai, Homemaker</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="user-rating">★★★★★</div>
+                    <p>"The referral program is amazing! I shared with my college WhatsApp group and now I earn passive income every day. Best side hustle for students without any investment."</p>
+                    <div class="user-info">
+                        <div class="user-avatar"></div>
+                        <div>
+                            <strong>Vikram Singh</strong>
+                            <div>Bangalore, College Student</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section class="leaderboard" id="leaderboard">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Earners This Month</h2>
+                <p>Join our leaderboard and get recognized for your earnings</p>
+            </div>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>User</th>
+                        <th>Level</th>
+                        <th>Earnings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Amit K.</td>
+                        <td>Master <span class="badge badge-master">Level 15</span></td>
+                        <td>₹18,750</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Sneha R.</td>
+                        <td>Expert <span class="badge badge-expert">Level 12</span></td>
+                        <td>₹15,320</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Rajesh G.</td>
+                        <td>Expert <span class="badge badge-expert">Level 10</span></td>
+                        <td>₹12,845</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Deepika S.</td>
+                        <td>Intermediate <span class="badge badge-intermediate">Level 8</span></td>
+                        <td>₹10,675</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Ramesh P.</td>
+                        <td>Intermediate <span class="badge badge-intermediate">Level 7</span></td>
+                        <td>₹9,120</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+   
+
+    
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Earning?</h2>
+            <p>Join over 250,000 users who are already making money with EarnBuddy. Sign up now and get a ₹25 bonus when you complete your first offer!</p>
+            <a href="https://locked1.com/cl/i/7d6qn5" class="btn btn-secondary">Sign Up Free - Get ₹25 Bonus</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>EarnBuddy</h3>
+                    <p>Turn your free time into real money. Complete offers, get paid instantly, and unlock financial freedom.</p>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">TW</a>
+                        <a href="#">IG</a>
+                        <a href="#">YT</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#earnings">Earnings</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Earn Money</h3>
+                    <ul>
+                        <li><a href="#">Surveys</a></li>
+                        <li><a href="#">App Downloads</a></li>
+                        <li><a href="#">Special Offers</a></li>
+                        <li><a href="#">Referral Program</a></li>
+                        <li><a href="#">Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 EarnBuddy. All rights reserved. EarnBuddy is not affiliated with Google, PayTM, or any other third-party companies mentioned.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Popup -->
+    <div class="notification">
+        <div class="notification-icon">🎉</div>
+        <div class="notification-text">
+            <strong>New offer available!</strong> Complete a 5-minute survey and earn ₹50 instantly.
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const accordionContent = header.nextElementSibling;
+                
+                if (accordionContent.classList.contains('active')) {
+                    accordionContent.classList.remove('active');
+                    header.querySelector('.accordion-icon').textContent = '+';
+                } else {
+                    accordionContent.classList.add('active');
+                    header.querySelector('.accordion-icon').textContent = '-';
+                }
+            });
+        });
+
+        // Show notification after 3 seconds
+        setTimeout(() => {
+            document.querySelector('.notification').classList.add('show');
+        }, 3000);
+
+        // Close notification when clicked
+        document.querySelector('.notification').addEventListener('click', function() {
+            this.classList.remove('show');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.nav-links').style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
